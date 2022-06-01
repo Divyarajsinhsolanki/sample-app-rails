@@ -2,6 +2,11 @@
 
 $gray-medium-light: #eaeaea;
 
+.imggg
+{
+position: absolute;
+z-index: -1;
+}
 
 /* mixins, variables, etc. */
 $gray-medium-light: #eaeaea;
@@ -120,6 +125,18 @@ margin-left: 0;
 }
 }
 
+.checkbox {
+margin-top: -10px;
+margin-bottom: 10px;
+span {
+margin-left: 20px;
+font-weight: normal;
+}
+}
+#session_remember_me {
+width: auto;
+margin-left: 0;
+}
 
 /* mixins, variables, etc. */
 
@@ -231,3 +248,4 @@ margin: 0 0 30px 0;
 color: $state-danger-text;
 }
 }
+
