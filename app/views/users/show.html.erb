@@ -3,19 +3,12 @@
 	<aside class="col-md-4">
 		<section class="user_info">
 		<h1>
-			<%= gravatar_for @user %>
 		
+		<%= gravatar_for @user %>
 		
-		<%= p @user.name %>
-		<%=p @user %>
-		<%= p @user.email %>
-
-		<%#=  p @user.password_digest %>		
-		<br>
-		<%=  p @user.created_at %>		
-    <%= p @user.updated_at %>
-    <%= p @user.remember_digest %>
-
+	  <%=  @user.name %><br>
+		
+    
 		</h1>
 
 		</section>

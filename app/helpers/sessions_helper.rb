@@ -23,6 +23,22 @@ module SessionsHelper
 		end
 	end
 
+    def redirect_back_or(default)
+      redirect_to(session[:return_to] || default)
+      clear_return_to
+    end
+
+    def clear_return_to
+      session[:return_to] = nil
+    end
+
+
+# Returns true if the given user is the current user.
+	def current_user?(user)
+		user && user == current_user
+
+	end
+
 	def logged_in?
 		!current_user.nil?
 	end
