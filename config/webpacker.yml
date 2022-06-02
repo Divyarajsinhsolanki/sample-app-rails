@@ -20,6 +20,7 @@ default: &default
   # Extract and emit a css file
   extract_css: false
 
+
   static_assets_extensions:
     - .jpg
     - .jpeg
@@ -91,7 +92,7 @@ production:
   compile: false
 
   # Extract and emit a css file
-  extract_css: true
-
+  # extract_css: true
+  extract_css: false
   # Cache manifest.json for performance
   cache_manifest: true
