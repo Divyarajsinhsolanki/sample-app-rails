@@ -18,14 +18,25 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
       if @user.save
-              log_in @user
-        flash[:success] = "Welcome to the Sample App!"
-        redirect_to user_path(id: @user.id)
-        # Handle a successful save.
+        UserMailer.account_activation(@user).deliver_now
+        flash[:info] = "Please check your email to activate your account."
+        redirect_to root_url
       else
-       render 'new'
+        render 'new'
       end
-  end
+    end
+
+  # def create
+  #   @user = User.new(user_params)
+  #     if @user.save
+  #             log_in @user
+  #       flash[:success] = "Welcome to the Sample App!"
+  #       redirect_to user_path(id: @user.id)
+  #       # Handle a successful save.
+  #     else
+  #      render 'new'
+  #     end
+  # end
 
   def edit
     @user = User.find(params[:id])
@@ -56,7 +67,7 @@ end
   def logged_in_user
     unless logged_in?
       store_location
-      flash[:danger] = "Please log in."
+      flash[:danger]   = "Please log in."
       redirect_to login_url
     end
   end

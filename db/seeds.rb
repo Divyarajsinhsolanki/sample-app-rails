@@ -9,23 +9,37 @@
 
 # Create a main sample user.
 
-User.create!(name: "Example User",
-							email: "example@railstutorial.org",
-							password: "foobar",
-							password_confirmation: "foobar",
-							admin: true)
+if (u = User.find_by(email: "example@railstutorial.org", admin: true)).present?
+  puts "==========if admin=========="
+else
+  puts "==========else admin=========="
+  User.create!(name: "Example User",
+                email: "exampleupdatated@railstutorial.org",
+                password: "foobar",
+                password_confirmation: "foobar",
+                admin: false,
+                activated: true,
+                activated_at: Time.zone.now)
+end
 
 
 # Generate a bunch of additional users.
 
 99.times do |n|
-	name = Faker::Name.name
-	email = "example-#{n+1}@railstutorial.org"
-	password = "password"
+  name = Faker::Name.name
+  email = "example-#{n+1}@railstutorial.org"
+  password = "password"
 
-	User.create!(name: name,
-							email: email,
-							password: password,
-							password_confirmation: password)
-
+  if (u = User.find_by(email: email)).present?
+    puts "==========if normal=========="
+    u.update(activated_at: Time.zone.now)
+  else
+    puts "==========else normal=========="
+    User.create!(name: name,
+                email: email,
+                password: password,
+                password_confirmation: password,
+                activated: true,
+                activated_at: Time.zone.now)
+  end
 end
