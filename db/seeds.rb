@@ -9,10 +9,10 @@
 
 # Create a main sample user.
 
-if (u = User.find_by(email: "example@railstutorial.org", admin: true)).present?
-  puts "==========if admin=========="
-else
-  puts "==========else admin=========="
+                                                  # if (u = User.find_by(email: "example@railstutorial.org", admin: true)).present?
+                                                  #   puts "==========if admin=========="
+                                                  # else
+                                                  #   puts "==========else admin=========="
   User.create!(name: "Example User",
                 email: "exampleupdatated@railstutorial.org",
                 password: "foobar",
@@ -30,11 +30,11 @@ end
   email = "example-#{n+1}@railstutorial.org"
   password = "password"
 
-  if (u = User.find_by(email: email)).present?
-    puts "==========if normal=========="
-    u.update(activated_at: Time.zone.now)
-  else
-    puts "==========else normal=========="
+                                                  # if (u = User.find_by(email: email)).present?
+                                                  #   puts "==========if normal=========="
+                                                  #   u.update(activated_at: Time.zone.now)
+                                                  # else
+                                                  #   puts "==========else normal=========="
     User.create!(name: name,
                 email: email,
                 password: password,
