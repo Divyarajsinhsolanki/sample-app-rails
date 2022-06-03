@@ -12,10 +12,10 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
   address: "smtp.gmail.com",
-  port: 587,
+  port:       587,
   user_name: "divyaraj.odoo.expert",
   password: "adhfprnijafrdbpv",
-  authentication: "plain",
+  authentication: :"plain",
   enable_starttls_auto: true
   }
 
