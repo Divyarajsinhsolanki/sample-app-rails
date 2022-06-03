@@ -1,5 +1,7 @@
 class UserMailer < ApplicationMailer
 
+# default from: 'divyaraj.odoo.expert@gmail.com' # Replace this email address with your own
+#   layout 'mailer'
 
   def account_activation(user)
     @user = user
