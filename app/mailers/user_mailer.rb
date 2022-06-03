@@ -1,19 +1,15 @@
 class UserMailer < ApplicationMailer
 
-# default from: 'divyaraj.odoo.expert@gmail.com' # Replace this email address with your own
-#   layout 'mailer'
-
   def account_activation(user)
     @user = user
     mail to: user.email, subject: "Account activation"
   end
-  
 
 
   def password_reset
     @greeting = "Hi"
-    mail to: "to@example.org"
-  end
+    mail to: user.email
+      end
 
 end
 
