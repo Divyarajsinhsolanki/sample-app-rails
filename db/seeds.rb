@@ -20,7 +20,7 @@
                 admin: false,
                 activated: true,
                 activated_at: Time.zone.now)
-end
+
 
 
 # Generate a bunch of additional users.
@@ -41,5 +41,5 @@ end
                 password_confirmation: password,
                 activated: true,
                 activated_at: Time.zone.now)
-  end
+  
 end
