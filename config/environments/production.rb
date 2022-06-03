@@ -1,11 +1,15 @@
 Rails.application.configure do
 
 
-  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.perform_caching = false
   host = 'localhost:3000' 
-
   config.action_mailer.default_url_options = { :host => 'localhost:3000', protocol: 'http' }
   # config.require_master_key = true
+
+
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
   :address              => "divyaraj.odoo.expert@gmail.com",
   :port                 => 587,
@@ -14,6 +18,9 @@ Rails.application.configure do
   :authentication       => "plain",
   :enable_starttls_auto => true
   }
+
+
+
 
   # Settings specified here will take precedence over those in config/application.rb.
 
