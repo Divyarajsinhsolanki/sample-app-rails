@@ -13,12 +13,10 @@
         </button>
       </div>
     <ul class="nav navbar-nav navbar-right collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-<!--  <ul class="nav navbar-nav navbar-right"> -->
          
           <li><%= link_to "Home",root_path %></li>
           <li><%= link_to "Help", help_path %></li>
-           
+    
          <% if logged_in? %>
          <li><%= link_to "Users", users_path %></li>
          <li><%= link_to "items", user_items_path(user_id: current_user.id) %></li>
@@ -36,9 +34,9 @@
           
            <li><%= link_to "Log in", login_path %></li>
           <% end %>
-
-        </ul>
-
+           <li><a class="btn btn-outline-light btn-floating m-1" href="https://github.com/Divyarajsinhsolanki" role="button">
+          <i class="fa fa-github"></i></a></li>
+          </ul>
       </nav>
      </div>
     </header>
