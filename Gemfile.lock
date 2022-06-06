@@ -267,7 +267,7 @@ DEPENDENCIES
   guard
   guard-minitest
   jbuilder (~> 2.7)
-  listen (>= 3.0.5, < 3.2)
+  listen
   minitest
   minitest-reporters
   pg
