@@ -7,7 +7,7 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
   # end
 
   # test "should get new" do
-  #   get new_user_item_path(user_id: current_user.id)
+  #   get new_user_item_path 
   #   assert_response :success
   # end
 
