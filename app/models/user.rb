@@ -5,6 +5,8 @@ attr_accessor :remember_token, :activation_token
 before_save :downcase_email
 before_create :create_activation_digest
 
+has_many :items
+
 
 	validates :name, presence: true, length: { minimum: 2, maximum: 50 }	
 		

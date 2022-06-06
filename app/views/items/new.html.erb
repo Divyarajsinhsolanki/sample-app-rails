@@ -1,0 +1,34 @@
+<h1>Add new item</h1>
+
+
+	<%= form_with(model: @item, url: user_items_path, method: "post", local: true) do |f| %>
+
+			<% if @item.errors.any? %>
+	<div id="error_explanation">
+	
+		<div class="alert alert-danger">
+			The form contains <%= pluralize(@item.errors.count, "error") %>.
+		</div>
+	
+		<ul>
+			<% @item.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+			<% end %>
+		</ul>
+	
+	</div>
+<% end %>
+
+
+	<%= f.label :name %>
+	<%= f.text_field :name %>
+	
+	<%= f.label :description %>
+	<%= f.text_field :description %>
+
+	<%= f.hidden_field :user_id, value: current_user.id %>
+
+<%= f.submit "Add item"%>	
+
+
+	<% end%>

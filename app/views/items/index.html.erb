@@ -1,0 +1,36 @@
+<h1>Items</h1>
+
+
+
+
+	<%= link_to "Add Item", new_user_item_path(user_id: current_user.id) %>
+
+
+<table class="table">
+    <thead>
+      <tr>
+        <th>Mame</th>
+        <th>Description</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+<% @items.each do |item|  %>
+      <tr>
+        <td><%= item.name %></td>
+        <td><%= item.description %></td>
+        <td>
+        	<%= link_to "Edit", edit_user_item_path(user_id: current_user.id, id: item.id) %>
+        	<%= link_to "Delete", user_item_path(id: item.id, user_id: current_user.id), method: :delete %>
+        	<%= link_to "show", user_item_path(user_id: current_user.id, id: item.id) %>
+       
+        
+        </td>
+        
+
+      </tr>
+<% end %>
+</tbody>
+</table>
+
+ 
