@@ -1,12 +1,11 @@
 class ItemsController < ApplicationController
+  
   def index
-
   @items  = current_user.items
-
+  @item = Item.new(user_id: current_user.id)
   end
 
   def new
-    @item = current_user.items.new()
   end
 
 
@@ -17,7 +16,7 @@ class ItemsController < ApplicationController
       flash[:success] = "successful"
       redirect_to user_items_path(current_user)
     else
-      render 'new'
+      redirect_to user_items_path(current_user)
     end
   end
 
@@ -28,7 +27,11 @@ class ItemsController < ApplicationController
   def show
    @item = current_user.items.find(params[:id])
   end
-
+ 
+ def destroy
+  @item = current_user.items.find(params[:id]).destroy
+  redirect_to user_items_path(current_user)  
+ end
 
  private
     
