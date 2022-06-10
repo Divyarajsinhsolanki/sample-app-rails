@@ -1,42 +1,31 @@
+<% if @item == nil %>
+  <h1>Add new item</h1>
 
+  <%= form_with(model:  Item.new(user_id: params[:user_id]), url: user_items_path,remote: true ) do |f| %>
+      <table class = "table">
+      <tr><th>  <%= f.label :name %></th>
+          <th>  <%= f.label :description %></th>
+          <th>  <%= f.hidden_field :user_id, value: current_user.id %></th></tr><tr>
+          <td>  <%= f.text_field :name %></td>
+          <td>  <%= f.text_field :description %></td>   
+          <td>  <%= f.submit "Add item", class: "btn btn-primary"%> </td></tr>
+      </table>
+    <% end %>
+<% else %>
+     <h1>Update </h1>
+     <%= form_with(model: @item,  url: [current_user,@item], method: :put,local: true)  do |f| %>
 
+    <table class = "table">
+    <tr><th>  <%= f.label :name %></th>
+        <th>  <%= f.label :description %></th>
+        <th>  <%= f.hidden_field :user_id, value: current_user.id %></th></tr><tr>
+        <td>  <%= f.text_field :name %></td>
+        <td>  <%= f.text_field :description %></td>   
+        <td>  <%= f.submit "Update", class: "btn btn-primary"%> </td></tr>
+    </table>
 
-<h1>Add new item</h1>
-
-
-<%= form_with(model: @item, url: user_items_path, method: "post", local: true) do |f| %>
-
-<% if @item.errors.any? %>
-<h1>error</h1>
-  <div id="error_explanation">
-  
-    <div class="alert alert-danger">
-      The form contains <%= pluralize(@item.errors.count, "error") %>.
-      </div>
-  
-    <ul>
-      <% @item.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
-  <% else %> 
-<h1>no error</h1>
+  <% end %>
 <% end %>
-<table class = "table">
-  <tr>
-    <th>  <%= f.label :name %></th>
-    <th  >  <%= f.label :description %></th>
-    <th> <%= f.hidden_field :user_id, value: current_user.id %></th>
-  </tr><tr>
-    <td>  <%= f.text_field :name %></td>
-    <td>  <%= f.text_field :description %></td>
-    
-    <td > <%= f.submit "Add item", class: "btn btn-primary"%> </td>
-  </tr>
-</table>
-  <% end%>
-
 <h1>Items</h1>
 
 <table class="table">
@@ -53,16 +42,11 @@
         <td><%= item.name %></td>
         <td><%= item.description %></td>
         <td>
-        	<%= link_to "Edit", edit_user_item_path(user_id: current_user.id, id: item.id) %>
-        	<%= link_to "Delete", user_item_path(id: item.id, user_id: current_user.id), method: :delete %>
-         
-        
+        	<%= link_to "Edit",   user_items_path( id: item.id)%>
+        	<%= link_to "Delete", user_item_path(id: item.id, user_id:  current_user.id), method: :delete , remote: true%>
+                 
         </td>
-        
-
       </tr>
 <% end %>
-</tbody>
+    </tbody>
 </table>
-
- 
